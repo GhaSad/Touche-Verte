@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Les références de Touche Verte — Nos clients et partenaires à travers le Maroc." />
+  <title>Références — Touche Verte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .refs-tabs { display:flex; gap:0; border-bottom:1px solid rgba(45,106,53,.15); margin-bottom:56px; overflow-x:auto; }
+    .ref-tab { padding:14px 32px; font-size:11px; letter-spacing:.15em; text-transform:uppercase; font-weight:500; cursor:pointer; background:none; border:none; border-bottom:2px solid transparent; color:var(--text-mid); font-family:var(--font-body); transition:all .3s; white-space:nowrap; }
+    .ref-tab.active { color:var(--green-deep); border-bottom-color:var(--green-mid); }
+    .ref-tab:hover { color:var(--green-mid); }
+
+    .refs-content { display:none; }
+    .refs-content.active { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+
+    .ref-card { background:white; padding:36px; border:1px solid rgba(45,106,53,.1); display:flex; flex-direction:column; gap:16px; transition:all .3s; }
+    .ref-card:hover { border-color:var(--green-light); transform:translateY(-4px); box-shadow:0 8px 24px rgba(45,106,53,.1); }
+    .ref-logo { width:56px; height:56px; background:var(--green-pale); display:flex; align-items:center; justify-content:center; font-size:28px; }
+    .ref-name { font-family:var(--font-display); font-size:20px; font-weight:600; color:var(--green-deep); }
+    .ref-desc { font-size:13px; color:var(--text-mid); font-weight:300; line-height:1.7; }
+    .ref-meta { display:flex; gap:8px; flex-wrap:wrap; }
+    .ref-badge { font-size:10px; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; background:var(--green-pale); color:var(--green-deep); }
+
+    .testimonials { display:flex; flex-direction:column; gap:32px; margin-top:64px; }
+    .testimonial { background:white; padding:44px; border:1px solid rgba(45,106,53,.1); display:grid; grid-template-columns:auto 1fr; gap:32px; align-items:start; }
+    .testimonial-avatar { width:64px; height:64px; background:var(--green-pale); display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0; }
+    .testimonial-quote { font-family:var(--font-display); font-size:18px; color:var(--text-dark); line-height:1.7; font-style:italic; margin-bottom:16px; }
+    .testimonial-author { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--green-mid); font-weight:500; }
+    .testimonial-company { font-size:12px; color:var(--text-light); }
+    .quote-mark { font-family:var(--font-display); font-size:80px; color:var(--green-pale); line-height:.6; float:left; margin-right:8px; }
+
+    .numbers-row { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(45,106,53,.1); margin:64px 0 0; }
+    .number-cell { background:var(--cream); padding:40px 32px; text-align:center; }
+    .number-val { font-family:var(--font-display); font-size:52px; color:var(--green-deep); font-weight:400; line-height:1; }
+    .number-val sup { font-size:28px; color:var(--green-light); }
+    .number-label { font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:var(--text-light); margin-top:8px; }
+
+    @media(max-width:768px){
+      .refs-content.active { grid-template-columns:1fr; }
+      .testimonial { grid-template-columns:1fr; }
+      .numbers-row { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">Touche<em>Verte</em></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="services.html">Nos Services</a></li>
+      <li><a href="realisations.html">Nos Réalisations</a></li>
+      <li><a href="references.html" class="active">Références</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="font-size:11px;padding:12px 28px;">Nous Contacter</a>
+    <div class="nav-burger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="page-hero">
+    <p class="tag">Ils nous font confiance</p>
+    <h1 class="display-title">Nos <em>Références</em></h1>
+    <p>Plus de 500 projets réalisés pour des clients privés et institutionnels</p>
+  </div>
+
+  <!-- CHIFFRES -->
+  <div class="numbers-row">
+    <div class="number-cell fade-up delay-1">
+      <div class="number-val" data-target="500">500<sup>+</sup></div>
+      <p class="number-label">Projets réalisés</p>
+    </div>
+    <div class="number-cell fade-up delay-2">
+      <div class="number-val" data-target="200">200<sup>+</sup></div>
+      <p class="number-label">Clients fidèles</p>
+    </div>
+    <div class="number-cell fade-up delay-3">
+      <div class="number-val" data-target="15">15<sup>+</sup></div>
+      <p class="number-label">Villes au Maroc</p>
+    </div>
+    <div class="number-cell fade-up delay-4">
+      <div class="number-val" data-target="20">21<sup>+</sup></div>
+      <p class="number-label">Années d'expérience</p>
+    </div>
+  </div>
+
+  <!-- RÉFÉRENCES PAR CATÉGORIE -->
+  <section style="padding:100px 60px;background:var(--cream);">
+    <div class="section-header fade-up">
+      <div>
+        <p class="tag">Nos clients</p>
+        <h2 class="display-title section-title">Références par <em>secteur</em></h2>
+      </div>
+    </div>
+
+    <div class="refs-tabs fade-up delay-1">
+      <button class="ref-tab active" data-tab="hotellerie">Hôtellerie</button>
+      <button class="ref-tab" data-tab="residentiel">Résidentiel</button>
+      <button class="ref-tab" data-tab="institutionnel">Institutionnel</button>
+      <button class="ref-tab" data-tab="entreprises">Entreprises</button>
+    </div>
+
+    <!-- Hôtellerie -->
+    <div class="refs-content active" id="tab-hotellerie">
+      <div class="ref-card fade-up delay-1">
+        <div class="ref-logo">🏨</div>
+        <div class="ref-name">Hôtel Sofitel</div>
+        <p class="ref-desc">Aménagement et entretien des jardins et espaces verts de plusieurs établissements Sofitel au Maroc.</p>
+        <div class="ref-meta"><span class="ref-badge">Marrakech</span><span class="ref-badge">Casablanca</span></div>
+      </div>
+      <div class="ref-card fade-up delay-2">
+        <div class="ref-logo">🏩</div>
+        <div class="ref-name">Palais Rhoul</div>
+        <p class="ref-desc">Création et entretien des jardins du Palais Rhoul, havre de luxe et de sérénité en pleine Palmeraie de Marrakech.</p>
+        <div class="ref-meta"><span class="ref-badge">Marrakech</span><span class="ref-badge">Luxe</span></div>
+      </div>
+      <div class="ref-card fade-up delay-3">
+        <div class="ref-logo">🌴</div>
+        <div class="ref-name">Riad Yasmine</div>
+        <p class="ref-desc">Aménagement végétal des patios intérieurs et terrasses de riads traditionnels dans la médina de Marrakech.</p>
+        <div class="ref-meta"><span class="ref-badge">Marrakech</span><span class="ref-badge">Intérieur</span></div>
+      </div>
+      <div class="ref-card fade-up delay-1">
+        <div class="ref-logo">🏖️</div>
+        <div class="ref-name">Club Med Agadir</div>
+        <p class="ref-desc">Entretien régulier des espaces verts et piscines végétalisées du village vacances Club Med d'Agadir.</p>
+        <div class="ref-meta"><span class="ref-badge">Agadir</span><span class="ref-badge">Entretien</span></div>
+      </div>
+      <div class="ref-card fade-up delay-2">
+        <div class="ref-logo">🌿</div>
+        <div class="ref-name">Kenzi Tower Hotel</div>
+        <p class="ref-desc">Aménagement des terrasses végétalisées et espaces de réception extérieurs du Kenzi Tower à Casablanca.</p>
+        <div class="ref-meta"><span class="ref-badge">Casablanca</span><span class="ref-badge">Toiture</span></div>
+      </div>
+      <div class="ref-card fade-up delay-3">
+        <div class="ref-logo">🏔️</div>
+        <div class="ref-name">Hôtel Atlas Asni</div>
+        <p class="ref-desc">Création d'un jardin montagnard intégré au paysage naturel de l'Atlas avec espèces endémiques marocaines.</p>
+        <div class="ref-meta"><span class="ref-badge">Marrakech</span><span class="ref-badge">Montagne</span></div>
+      </div>
+    </div>
+
+    <!-- Résidentiel -->
+    <div class="refs-content" id="tab-residentiel">
+      <div class="ref-card fade-up delay-1">
+        <div class="ref-logo">🏘️</div>
+        <div class="ref-name">Groupe Addoha</div>
+        <p class="ref-desc">Aménagement paysager de plusieurs ensembles résidentiels Addoha à travers le Maroc, soit plus de 50 hectares d'espaces verts.</p>
+        <div class="ref-meta"><span class="ref-badge">National</span><span class="ref-badge">+50 ha</span></div>
+      </div>
+      <div class="ref-card fade-up delay-2">
+        <div class="ref-logo">🏡</div>
+        <div class="ref-name">Alliances Développement</div>
+        <p class="ref-desc">Création des espaces verts des résidences haut de gamme Alliances à Marrakech, Casablanca et Rabat.</p>
+        <div class="ref-meta"><span class="ref-badge">Luxe</span><span class="ref-badge">3 villes</span></div>
+      </div>
+      <div class="ref-card fade-up delay-3">
+        <div class="ref-logo">🏗️</div>
+        <div class="ref-name">Immolog</div>
+        <p class="ref-desc">Partenaire paysager d'Immolog pour l'aménagement de leurs programmes résidentiels en région Casablanca-Settat.</p>
+        <div class="ref-meta"><span class="ref-badge">Casablanca</span><span class="ref-badge">Settat</span></div>
+      </div>
+    </div>
+
+    <!-- Institutionnel -->
+    <div class="refs-content" id="tab-institutionnel">
+      <div class="ref-card fade-up delay-1">
+        <div class="ref-logo">🏛️</div>
+        <div class="ref-name">Commune de Casablanca</div>
+        <p class="ref-desc">Entretien des parcs publics, ronds-points et alignements d'arbres dans plusieurs arrondissements de Casablanca.</p>
+        <div class="ref-meta"><span class="ref-badge">Public</span><span class="ref-badge">Entretien</span></div>
+      </div>
+      <div class="ref-card fade-up delay-2">
+        <div class="ref-logo">🎓</div>
+        <div class="ref-name">Universités & Écoles</div>
+        <p class="ref-desc">Aménagement des espaces verts de plusieurs établissements scolaires et universitaires publics et privés au Maroc.</p>
+        <div class="ref-meta"><span class="ref-badge">Éducation</span><span class="ref-badge">National</span></div>
+      </div>
+      <div class="ref-card fade-up delay-3">
+        <div class="ref-logo">🏥</div>
+        <div class="ref-name">Cliniques & Hôpitaux</div>
+        <p class="ref-desc">Création et entretien des jardins thérapeutiques de cliniques privées. La verdure au service du bien-être des patients.</p>
+        <div class="ref-meta"><span class="ref-badge">Santé</span><span class="ref-badge">Bien-être</span></div>
+      </div>
+    </div>
+
+    <!-- Entreprises -->
+    <div class="refs-content" id="tab-entreprises">
+      <div class="ref-card fade-up delay-1">
+        <div class="ref-logo">🏢</div>
+        <div class="ref-name">OCP Group</div>
+        <p class="ref-desc">Aménagement paysager des sites industriels et administratifs du groupe OCP, avec une attention particulière à la durabilité.</p>
+        <div class="ref-meta"><span class="ref-badge">Industrie</span><span class="ref-badge">National</span></div>
+      </div>
+      <div class="ref-card fade-up delay-2">
+        <div class="ref-logo">🏬</div>
+        <div class="ref-name">Morocco Mall</div>
+        <p class="ref-desc">Conception et entretien des aménagements paysagers intérieurs et extérieurs du Morocco Mall de Casablanca.</p>
+        <div class="ref-meta"><span class="ref-badge">Commerce</span><span class="ref-badge">Casablanca</span></div>
+      </div>
+      <div class="ref-card fade-up delay-3">
+        <div class="ref-logo">⚙️</div>
+        <div class="ref-name">Zones Industrielles</div>
+        <p class="ref-desc">Végétalisation et entretien des zones industrielles de Casablanca et Tanger pour un cadre de travail plus agréable.</p>
+        <div class="ref-meta"><span class="ref-badge">Industrie</span><span class="ref-badge">Casablanca</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section style="padding:100px 60px;background:white;">
+    <div class="section-header fade-up">
+      <div>
+        <p class="tag">Ce qu'ils disent de nous</p>
+        <h2 class="display-title section-title">Témoignages <em>clients</em></h2>
+      </div>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial fade-up delay-1">
+        <div class="testimonial-avatar">🌿</div>
+        <div>
+          <p class="testimonial-quote"><span class="quote-mark">"</span>Touche Verte a transformé les espaces verts de notre résidence. Leur professionnalisme, leur réactivité et la qualité de leurs réalisations sont exemplaires. Nous renouvelons notre contrat d'entretien chaque année sans hésitation.</p>
+          <p class="testimonial-author">Mohamed K.</p>
+          <p class="testimonial-company">Syndic Résidence Al Firdaws, Casablanca</p>
+        </div>
+      </div>
+      <div class="testimonial fade-up delay-2">
+        <div class="testimonial-avatar">🏡</div>
+        <div>
+          <p class="testimonial-quote"><span class="quote-mark">"</span>Nous avons confié à Touche Verte l'aménagement du jardin de notre villa. Le résultat dépasse nos espérances. Leur bureau d'études a su comprendre notre vision et la concrétiser avec un talent et un savoir-faire remarquables.</p>
+          <p class="testimonial-author">Nadia et Hassan B.</p>
+          <p class="testimonial-company">Propriétaires, Villa — Marrakech</p>
+        </div>
+      </div>
+      <div class="testimonial fade-up delay-3">
+        <div class="testimonial-avatar">🏨</div>
+        <div>
+          <p class="testimonial-quote"><span class="quote-mark">"</span>Depuis plus de 10 ans, Touche Verte assure l'entretien de nos espaces verts avec un professionnalisme constant. Leur équipe est toujours disponible et leurs interventions sont irréprochables. Un partenaire de confiance.</p>
+          <p class="testimonial-author">Direction Technique</p>
+          <p class="testimonial-company">Hôtel Sofitel Marrakech</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div style="background:var(--green-deep);padding:80px 60px;text-align:center">
+    <h2 class="display-title" style="font-size:48px;color:var(--cream);margin-bottom:24px">Rejoignez nos <em style="color:var(--green-light)">500+ clients</em></h2>
+    <p style="font-size:14px;color:rgba(247,243,236,.6);margin-bottom:36px;font-weight:300">Demandez votre devis gratuit dès aujourd'hui</p>
+    <a href="contact.html" class="btn btn-ghost">Nous contacter →</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div><p class="footer-logo">Touche<em>Verte</em></p><p class="footer-desc">Spécialistes de l'aménagement et de l'entretien des espaces verts et jardins au Maroc depuis 2005.</p></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="bureau-etudes.html">Bureau d'études</a></li><li><a href="amenagement.html">Aménagement</a></li><li><a href="entretien.html">Entretien</a></li></ul></div>
+      <div class="footer-col"><h4>Réalisations</h4><ul><li><a href="villas.html">Villas</a></li><li><a href="groupes-residentiels.html">Résidentiel</a></li><li><a href="amenagement-ext.html">Extérieur</a></li><li><a href="amenagement-int.html">Intérieur</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Formulaire</a></li><li><a href="mailto:contact@toucheverte.co.ma">Email</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Touche Verte SARL — Tous droits réservés</span>
+       
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    /* Onglets références */
+    const tabs = document.querySelectorAll('.ref-tab');
+    const contents = document.querySelectorAll('.refs-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

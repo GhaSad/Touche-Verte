@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aménagements intérieurs Touche Verte — Murs végétaux, jardins d'intérieur et plantes pour bureaux et hôtels au Maroc." />
+  <title>Aménagements Internes — Touche Verte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .int-hero-split { display:grid; grid-template-columns:1fr 1fr; }
+    .int-img { height:600px; display:flex; align-items:center; justify-content:center; font-size:140px; opacity:.2; }
+    .int-content { padding:80px; display:flex; flex-direction:column; justify-content:center; background:var(--cream); }
+    .benefits { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:28px; }
+    .benefit { background:var(--green-pale); padding:16px 20px; font-size:13px; color:var(--green-deep); font-weight:400; display:flex; align-items:center; gap:10px; }
+    .benefit::before { content:'🌿'; font-size:16px; }
+
+    .int-gallery { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:64px; }
+    .int-item { position:relative; height:340px; overflow:hidden; cursor:pointer; }
+    .int-item:nth-child(2) { grid-row:span 2; height:100%; }
+    .int-bg { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:80px; opacity:.22; transition:transform .6s ease; }
+    .int-item:hover .int-bg { transform:scale(1.06); }
+    .int-caption { position:absolute; inset:0; background:linear-gradient(to top,rgba(26,58,31,.82) 0%,transparent 50%); display:flex; flex-direction:column; justify-content:flex-end; padding:28px; opacity:0; transition:opacity .4s; }
+    .int-item:hover .int-caption { opacity:1; }
+    .int-cat { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--green-pale); margin-bottom:4px; }
+    .int-name { font-family:var(--font-display); font-size:22px; color:var(--cream); font-weight:400; }
+
+    .bienfaits { display:grid; grid-template-columns:repeat(4,1fr); gap:0; background:var(--green-deep); }
+    .bienfait { padding:48px 32px; text-align:center; border-right:1px solid rgba(247,243,236,.08); }
+    .bienfait:last-child { border-right:none; }
+    .bienfait-icon { font-size:36px; margin-bottom:16px; }
+    .bienfait-title { font-family:var(--font-display); font-size:20px; color:var(--cream); font-weight:600; margin-bottom:8px; }
+    .bienfait-desc { font-size:12px; color:rgba(247,243,236,.55); font-weight:300; line-height:1.7; }
+
+    .process-int { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:64px; }
+    .process-step { padding:36px; border-right:1px solid rgba(45,106,53,.1); position:relative; }
+    .process-step:last-child { border-right:none; }
+    .ps-num { font-family:var(--font-display); font-size:56px; color:var(--green-pale); font-weight:400; line-height:1; margin-bottom:12px; }
+    .ps-title { font-family:var(--font-display); font-size:20px; color:var(--green-deep); font-weight:600; margin-bottom:8px; }
+    .ps-desc { font-size:13px; color:var(--text-mid); font-weight:300; line-height:1.7; }
+
+    @media(max-width:768px){
+      .int-hero-split { grid-template-columns:1fr; }
+      .int-img { height:260px; }
+      .int-content { padding:48px 24px; }
+      .benefits { grid-template-columns:1fr; }
+      .int-gallery { grid-template-columns:1fr; }
+      .int-item:nth-child(n) { grid-row:auto; height:240px; }
+      .bienfaits { grid-template-columns:1fr 1fr; }
+      .bienfait { border:none; border-bottom:1px solid rgba(247,243,236,.08); }
+      .process-int { grid-template-columns:1fr 1fr; }
+      .process-step { border-bottom:1px solid rgba(45,106,53,.1); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">Touche<em>Verte</em></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="services.html">Nos Services</a></li>
+      <li class="has-dropdown"><a href="realisations.html" class="active">Nos Réalisations</a>
+        <ul class="dropdown">
+          <li><a href="villas.html">Villas</a></li>
+          <li><a href="groupes-residentiels.html">Groupes Résidentiels</a></li>
+          <li><a href="amenagement-ext.html">Aménagements Externes</a></li>
+          <li><a href="amenagement-int.html">Aménagements Internes</a></li>
+        </ul>
+      </li>
+      <li><a href="references.html">Références</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="font-size:11px;padding:12px 28px;">Nous Contacter</a>
+    <div class="nav-burger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="page-hero">
+    <p class="tag">Réalisations — Intérieur</p>
+    <h1 class="display-title">Aménagements <em>Internes</em></h1>
+    <p>Murs végétaux, jardins d'intérieur et plantes pour vos espaces de vie</p>
+  </div>
+
+  <!-- HERO SPLIT -->
+  <div class="int-hero-split">
+    <div class="int-img fade-up" style="background:linear-gradient(135deg,#2d6a35,#1a3a1f)">🪴</div>
+    <div class="int-content fade-up delay-1">
+      <p class="tag">La nature à l'intérieur</p>
+      <h2 class="display-title" style="font-size:44px">La verdure <em>s'invite</em> chez vous</h2>
+      <p style="font-size:14px;line-height:1.9;color:var(--text-mid);font-weight:300;margin-top:20px;margin-bottom:28px">
+        Les aménagements végétaux intérieurs transforment vos espaces de travail, d'accueil et de vie. Au-delà de l'esthétique, la végétation d'intérieur améliore la qualité de l'air, réduit le stress et crée une atmosphère apaisante.
+      </p>
+      <div class="benefits">
+        <div class="benefit">Murs végétaux intérieurs</div>
+        <div class="benefit">Murs végétaux extérieurs</div>
+        <div class="benefit">Jardins d'hiver</div>
+        <div class="benefit">Plantes de bureau</div>
+        <div class="benefit">Atriums végétalisés</div>
+        <div class="benefit">Terrasses végétalisées</div>
+      </div>
+      <div style="margin-top:36px">
+        <a href="contact.html" class="btn btn-primary">Demander un projet</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIENFAITS -->
+  <div class="bienfaits">
+    <div class="bienfait fade-up delay-1">
+      <div class="bienfait-icon">🫧</div>
+      <h3 class="bienfait-title">Qualité de l'air</h3>
+      <p class="bienfait-desc">Les plantes absorbent le CO₂ et filtrent les polluants intérieurs pour un air plus sain.</p>
+    </div>
+    <div class="bienfait fade-up delay-2">
+      <div class="bienfait-icon">🧘</div>
+      <h3 class="bienfait-title">Bien-être</h3>
+      <p class="bienfait-desc">La présence végétale réduit le stress, améliore la concentration et la productivité.</p>
+    </div>
+    <div class="bienfait fade-up delay-3">
+      <div class="bienfait-icon">🌡️</div>
+      <h3 class="bienfait-title">Régulation thermique</h3>
+      <p class="bienfait-desc">La végétation contribue à réguler la température et l'humidité ambiante naturellement.</p>
+    </div>
+    <div class="bienfait fade-up delay-4">
+      <div class="bienfait-icon">✨</div>
+      <h3 class="bienfait-title">Esthétique</h3>
+      <p class="bienfait-desc">Un mur végétal transforme instantanément un espace ordinaire en lieu de prestige.</p>
+    </div>
+  </div>
+
+  <!-- GALERIE -->
+  <section style="padding:100px 60px;background:white;">
+    <div class="section-header fade-up">
+      <div>
+        <p class="tag">Nos réalisations intérieures</p>
+        <h2 class="display-title section-title">Galerie <em>intérieure</em></h2>
+      </div>
+    </div>
+    <div class="int-gallery">
+      <div class="int-item">
+        <div class="int-bg" style="background:linear-gradient(135deg,#2d6a35,#1a3a1f)">🌿</div>
+        <div class="int-caption">
+          <p class="int-cat">Mur Végétal</p>
+          <p class="int-name">Lobby Hôtel Casablanca</p>
+        </div>
+      </div>
+      <div class="int-item">
+        <div class="int-bg" style="background:linear-gradient(135deg,#4a9e55,#2d6a35)">🪴</div>
+        <div class="int-caption">
+          <p class="int-cat">Jardin d'Intérieur</p>
+          <p class="int-name">Résidence Privée Rabat</p>
+        </div>
+      </div>
+      <div class="int-item">
+        <div class="int-bg" style="background:linear-gradient(135deg,#1a5c28,#0d3015)">🌱</div>
+        <div class="int-caption">
+          <p class="int-cat">Plantes de Bureau</p>
+          <p class="int-name">Open Space Tech — Casablanca</p>
+        </div>
+      </div>
+      <div class="int-item">
+        <div class="int-bg" style="background:linear-gradient(135deg,#3a7a42,#1a3a1f)">🌺</div>
+        <div class="int-caption">
+          <p class="int-cat">Atrium Végétalisé</p>
+          <p class="int-name">Centre Commercial Marrakech</p>
+        </div>
+      </div>
+      <div class="int-item">
+        <div class="int-bg" style="background:linear-gradient(135deg,#639922,#2d6a35)">🎋</div>
+        <div class="int-caption">
+          <p class="int-cat">Bambous Intérieur</p>
+          <p class="int-name">Restaurant Gastronomique</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSUS INSTALLATION -->
+  <section style="padding:100px 60px;background:var(--cream);">
+    <div class="section-header fade-up">
+      <div>
+        <p class="tag">Comment ça marche</p>
+        <h2 class="display-title section-title">Installation d'un <em>mur végétal</em></h2>
+      </div>
+    </div>
+    <div class="process-int">
+      <div class="process-step fade-up delay-1">
+        <div class="ps-num">01</div>
+        <h3 class="ps-title">Étude du site</h3>
+        <p class="ps-desc">Analyse de la luminosité, de l'humidité, de la surface disponible et des contraintes techniques du mur ou de la structure support.</p>
+      </div>
+      <div class="process-step fade-up delay-2">
+        <div class="ps-num">02</div>
+        <h3 class="ps-title">Sélection végétale</h3>
+        <p class="ps-desc">Choix des espèces adaptées à l'environnement intérieur : fougères, plantes tropicales, mousses et plantes grasses selon l'exposition.</p>
+      </div>
+      <div class="process-step fade-up delay-3">
+        <div class="ps-num">03</div>
+        <h3 class="ps-title">Installation</h3>
+        <p class="ps-desc">Pose de la structure support, du système d'irrigation automatique et plantation des végétaux selon le plan de composition validé.</p>
+      </div>
+      <div class="process-step fade-up delay-4">
+        <div class="ps-num">04</div>
+        <h3 class="ps-title">Entretien régulier</h3>
+        <p class="ps-desc">Suivi mensuel, taille, fertilisation et remplacement des végétaux pour maintenir l'aspect et la santé de votre mur végétal dans la durée.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div style="background:var(--green-deep);padding:80px 60px;text-align:center">
+    <h2 class="display-title" style="font-size:48px;color:var(--cream);margin-bottom:24px">La nature dans vos <em style="color:var(--green-light)">espaces</em></h2>
+    <p style="font-size:14px;color:rgba(247,243,236,.6);margin-bottom:36px;font-weight:300">Étude gratuite pour votre projet d'aménagement intérieur</p>
+    <a href="contact.html" class="btn btn-ghost">Nous contacter →</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div><p class="footer-logo">Touche<em>Verte</em></p><p class="footer-desc">Spécialistes de l'aménagement et de l'entretien des espaces verts et jardins au Maroc depuis 2005.</p></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="bureau-etudes.html">Bureau d'études</a></li><li><a href="amenagement.html">Aménagement</a></li><li><a href="entretien.html">Entretien</a></li></ul></div>
+      <div class="footer-col"><h4>Réalisations</h4><ul><li><a href="villas.html">Villas</a></li><li><a href="groupes-residentiels.html">Résidentiel</a></li><li><a href="amenagement-ext.html">Extérieur</a></li><li><a href="amenagement-int.html">Intérieur</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Formulaire</a></li><li><a href="mailto:contact@toucheverte.co.ma">Email</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Touche Verte SARL — Tous droits réservés</span>
+       
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node (si utilisé plus tard)
+node_modules/
+npm-debug.log
+
+# Images originales non compressées
+images/raw/
+images/original/
+
+# Fichiers temporaires
+*.tmp
+*.bak
+*.log

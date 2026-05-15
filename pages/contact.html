@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contactez Touche Verte — Demandez un devis gratuit pour votre projet d'aménagement paysager." />
+  <title>Contact — Touche Verte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">Touche<em>Verte</em></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li class="has-dropdown"><a href="services.html">Nos Services</a>
+        <ul class="dropdown">
+          <li><a href="bureau-etudes.html">Bureau d'études</a></li>
+          <li><a href="amenagement.html">Aménagement</a></li>
+          <li><a href="entretien.html">Entretien</a></li>
+        </ul>
+      </li>
+      <li><a href="realisations.html">Nos Réalisations</a></li>
+      <li><a href="references.html">Références</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary active" style="font-size:11px;padding:12px 28px;">Nous Contacter</a>
+    <div class="nav-burger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="page-hero">
+    <p class="tag">Restons en contact</p>
+    <h1 class="display-title">Votre projet <em>commence ici</em></h1>
+    <p>Devis gratuit — Réponse sous 48h</p>
+  </div>
+
+  <section class="contact" style="padding-top:100px">
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <p class="tag">Informations</p>
+        <h2 class="display-title section-title" style="font-size:44px">Parlons de votre <em>espace vert</em></h2>
+        <p>Que ce soit pour un jardin privé, un espace résidentiel ou un aménagement paysager professionnel, notre équipe est à votre écoute pour concrétiser votre vision.</p>
+
+        <div class="contact-detail" style="margin-top:40px">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <strong>Siège social</strong>
+            <span>Casablanca, Maroc</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div class="contact-detail-text">
+            <strong>Téléphone</strong>
+            <span>+212 6XX XXX XXX</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">✉️</div>
+          <div class="contact-detail-text">
+            <strong>Email</strong>
+            <span>contact@toucheverte.co.ma</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-text">
+            <strong>Horaires</strong>
+            <span>Lun – Sam : 8h00 – 18h00</span>
+          </div>
+        </div>
+
+        <!-- Carte Google Maps placeholder -->
+        <div style="margin-top:40px;height:220px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--green-mid);letter-spacing:0.08em">
+          [ Carte Google Maps ici ]
+        </div>
+      </div>
+
+      <form class="contact-form fade-up delay-1" novalidate>
+        <div class="form-row">
+          <div class="form-group col-left">
+            <input type="text" id="prenom" class="form-input" placeholder=" " required />
+            <label for="prenom" class="form-label">Prénom</label>
+          </div>
+          <div class="form-group col-right">
+            <input type="text" id="nom" class="form-input" placeholder=" " required />
+            <label for="nom" class="form-label">Nom</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-left">
+            <input type="email" id="email" class="form-input" placeholder=" " required />
+            <label for="email" class="form-label">Email</label>
+          </div>
+          <div class="form-group col-right">
+            <input type="tel" id="tel" class="form-input" placeholder=" " />
+            <label for="tel" class="form-label">Téléphone</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <select id="service" class="form-input" style="cursor:pointer">
+            <option value="" disabled selected></option>
+            <option value="bureau">Bureau d'études</option>
+            <option value="amenagement">Aménagement</option>
+            <option value="entretien">Entretien</option>
+            <option value="autre">Autre</option>
+          </select>
+          <label for="service" class="form-label">Type de service</label>
+        </div>
+        <div class="form-group">
+          <textarea id="message" class="form-input" placeholder=" " rows="5" required></textarea>
+          <label for="message" class="form-label">Décrivez votre projet</label>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Envoyer la demande</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <p class="footer-logo">Touche<em>Verte</em></p>
+        <p class="footer-desc">Spécialistes de l'aménagement et de l'entretien des espaces verts et jardins au Maroc depuis 2005.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="bureau-etudes.html">Bureau d'études</a></li>
+          <li><a href="amenagement.html">Aménagement</a></li>
+          <li><a href="entretien.html">Entretien</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Réalisations</h4>
+        <ul>
+          <li><a href="villas.html">Villas</a></li>
+          <li><a href="realisations.html">Toutes les réalisations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Touche Verte SARL — Tous droits réservés</span>
+       
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

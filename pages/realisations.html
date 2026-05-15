@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Découvrez nos réalisations : villas, groupes résidentiels, murs végétaux et jardins exotiques au Maroc." />
+  <title>Nos Réalisations — Touche Verte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .filter-btn {
+      padding: 10px 24px;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid rgba(45,106,53,.25);
+      background: transparent;
+      color: var(--text-mid);
+      font-family: var(--font-body);
+      transition: all 0.3s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--green-deep);
+      color: var(--cream);
+      border-color: var(--green-deep);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .gallery-item {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .gallery-item.large { grid-column: span 2; height: 380px; }
+    .gallery-thumb {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s ease;
+    }
+    .gallery-item:hover .gallery-thumb { transform: scale(1.06); }
+    .gallery-caption {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,58,31,.8) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .gallery-item:hover .gallery-caption { opacity: 1; }
+    .gallery-item[data-hidden="true"] { display: none; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">Touche<em>Verte</em></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="services.html">Nos Services</a></li>
+      <li><a href="realisations.html" class="active">Nos Réalisations</a></li>
+      <li><a href="references.html">Références</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="font-size:11px;padding:12px 28px;">Nous Contacter</a>
+    <div class="nav-burger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="page-hero">
+    <p class="tag">Notre portfolio</p>
+    <h1 class="display-title">Nos <em>Réalisations</em></h1>
+    <p>Plus de 500 projets réalisés à travers le Maroc depuis 2005</p>
+  </div>
+
+  <section style="padding:100px 60px">
+    <div class="filter-bar fade-up">
+      <button class="filter-btn active" data-filter="all">Tout voir</button>
+      <button class="filter-btn" data-filter="villas">Villas</button>
+      <button class="filter-btn" data-filter="residentiel">Résidentiel</button>
+      <button class="filter-btn" data-filter="exterieur">Extérieur</button>
+      <button class="filter-btn" data-filter="interieur">Intérieur</button>
+    </div>
+
+    <div class="gallery-grid fade-up delay-1">
+      <!-- Ajouter data-category pour le filtrage + src="images/..." pour les vraies photos -->
+      <div class="gallery-item large" data-category="villas">
+        <div class="gallery-thumb" style="background:linear-gradient(135deg,#2d6a35,#1a3a1f);display:flex;align-items:center;justify-content:center;font-size:100px;opacity:.25">🌳</div>
+        <div class="gallery-caption">
+          <p class="real-cat">Villas Privées</p>
+          <p class="real-name">Villa Royale — Marrakech</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="interieur">
+        <div class="gallery-thumb" style="background:linear-gradient(135deg,#3a7a42,#2d6a35);display:flex;align-items:center;justify-content:center;font-size:64px;opacity:.25">🪴</div>
+        <div class="gallery-caption">
+          <p class="real-cat">Mur Végétal</p>
+          <p class="real-name">Bureaux Casablanca</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="residentiel">
+        <div class="gallery-thumb" style="background:linear-gradient(135deg,#4a9e55,#3a7a42);display:flex;align-items:center;justify-content:center;font-size:64px;opacity:.25">🌺</div>
+        <div class="gallery-caption">
+          <p class="real-cat">Groupe Résidentiel</p>
+          <p class="real-name">Résidence Al Firdaws</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="exterieur">
+        <div class="gallery-thumb" style="background:linear-gradient(135deg,#1a3a1f,#0d2412);display:flex;align-items:center;justify-content:center;font-size:64px;opacity:.25">🌵</div>
+        <div class="gallery-caption">
+          <p class="real-cat">Jardin Sec</p>
+          <p class="real-name">Aménagement Exotique</p>
+        </div>
+      </div>
+      <div class="gallery-item large" data-category="residentiel">
+        <div class="gallery-thumb" style="background:linear-gradient(135deg,#639922,#2d6a35);display:flex;align-items:center;justify-content:center;font-size:100px;opacity:.25">🌿</div>
+        <div class="gallery-caption">
+          <p class="real-cat">Résidentiel</p>
+          <p class="real-name">Ensemble Résidentiel Rabat</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="villas">
+        <div class="gallery-thumb" style="background:linear-gradient(135deg,#2d6a35,#4a9e55);display:flex;align-items:center;justify-content:center;font-size:64px;opacity:.25">🌳</div>
+        <div class="gallery-caption">
+          <p class="real-cat">Villas</p>
+          <p class="real-name">Villa Moderne — Agadir</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="interieur">
+        <div class="gallery-thumb" style="background:linear-gradient(135deg,#1a5c28,#0d3015);display:flex;align-items:center;justify-content:center;font-size:64px;opacity:.25">🪴</div>
+        <div class="gallery-caption">
+          <p class="real-cat">Intérieur</p>
+          <p class="real-name">Lobby Hôtel — Fès</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="exterieur">
+        <div class="gallery-thumb" style="background:linear-gradient(135deg,#3a5c1a,#1a3a1f);display:flex;align-items:center;justify-content:center;font-size:64px;opacity:.25">🌿</div>
+        <div class="gallery-caption">
+          <p class="real-cat">Extérieur</p>
+          <p class="real-name">Parc Public — Kénitra</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="villas">
+        <div class="gallery-thumb" style="background:linear-gradient(135deg,#2d6a35,#1e4a23);display:flex;align-items:center;justify-content:center;font-size:64px;opacity:.25">🌻</div>
+        <div class="gallery-caption">
+          <p class="real-cat">Villas</p>
+          <p class="real-name">Villa Méditerranée</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <p class="footer-logo">Touche<em>Verte</em></p>
+        <p class="footer-desc">Spécialistes de l'aménagement et de l'entretien des espaces verts et jardins au Maroc depuis 2005.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="bureau-etudes.html">Bureau d'études</a></li>
+          <li><a href="amenagement.html">Aménagement</a></li>
+          <li><a href="entretien.html">Entretien</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Réalisations</h4>
+        <ul>
+          <li><a href="villas.html">Villas</a></li>
+          <li><a href="realisations.html">Toutes les réalisations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Formulaire</a></li>
+          <li><a href="mailto:contact@toucheverte.co.ma">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Touche Verte SARL — Tous droits réservés</span>
+       
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    /* Filtre galerie */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        galleryItems.forEach(item => {
+          const cat = item.dataset.category;
+          item.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

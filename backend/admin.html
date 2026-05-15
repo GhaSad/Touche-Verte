@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin — Touche Verte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --green:#1a3a1f;--green-mid:#2d6a35;--green-light:#4a9e55;--green-pale:#d4ead6;
+      --cream:#f7f3ec;--red:#c0392b;--text:#1c1c1a;--border:rgba(45,106,53,.15);
+      --font-display:'Cormorant Garamond',serif;--font:'Jost',sans-serif;
+    }
+    body{font-family:var(--font);background:#f0ede6;color:var(--text);min-height:100vh}
+
+    /* ── LOGIN ── */
+    #login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--green)}
+    .login-box{background:var(--cream);padding:52px 48px;width:100%;max-width:400px}
+    .login-logo{font-family:var(--font-display);font-size:28px;color:var(--green);margin-bottom:8px}
+    .login-logo em{font-style:italic;color:var(--green-light)}
+    .login-sub{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:36px}
+    .login-field{margin-bottom:20px}
+    .login-field label{display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--green-mid);margin-bottom:8px}
+    .login-field input{width:100%;padding:12px 16px;border:1px solid var(--border);background:white;font-family:var(--font);font-size:14px;outline:none;transition:.2s}
+    .login-field input:focus{border-color:var(--green-mid)}
+    .login-btn{width:100%;padding:14px;background:var(--green);color:var(--cream);font-family:var(--font);font-size:12px;letter-spacing:.15em;text-transform:uppercase;border:none;cursor:pointer;margin-top:8px;transition:.2s}
+    .login-btn:hover{background:var(--green-mid)}
+    .login-err{color:var(--red);font-size:13px;margin-top:12px;display:none}
+
+    /* ── LAYOUT ── */
+    #app{display:none;min-height:100vh}
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:240px;background:var(--green);display:flex;flex-direction:column;z-index:10}
+    .sidebar-logo{padding:28px 24px;font-family:var(--font-display);font-size:22px;color:var(--cream);border-bottom:1px solid rgba(255,255,255,.08)}
+    .sidebar-logo em{font-style:italic;color:var(--green-light)}
+    .sidebar-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:24px 24px 8px}
+    .nav-item{display:flex;align-items:center;gap:10px;padding:12px 24px;font-size:13px;color:rgba(255,255,255,.65);cursor:pointer;transition:.2s;border-left:3px solid transparent}
+    .nav-item:hover{color:var(--cream);background:rgba(255,255,255,.05)}
+    .nav-item.active{color:var(--cream);background:rgba(255,255,255,.08);border-left-color:var(--green-light)}
+    .nav-item .icon{font-size:16px}
+    .sidebar-bottom{margin-top:auto;padding:20px 24px;border-top:1px solid rgba(255,255,255,.08)}
+    .logout-btn{width:100%;padding:10px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-family:var(--font);font-size:12px;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;transition:.2s}
+    .logout-btn:hover{background:rgba(255,255,255,.15);color:var(--cream)}
+
+    .main{margin-left:240px;padding:40px;min-height:100vh}
+    .page-header{margin-bottom:36px}
+    .page-header h1{font-family:var(--font-display);font-size:36px;color:var(--green);font-weight:400}
+    .page-header h1 em{font-style:italic;color:var(--green-light)}
+    .page-header p{font-size:13px;color:#888;margin-top:4px}
+
+    /* ── CARDS STATS ── */
+    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px}
+    .stat-card{background:white;padding:24px 28px;border:1px solid var(--border)}
+    .stat-card .val{font-family:var(--font-display);font-size:40px;color:var(--green);font-weight:400}
+    .stat-card .lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-top:4px}
+
+    /* ── TABLE ── */
+    .card{background:white;border:1px solid var(--border);margin-bottom:24px}
+    .card-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .card-title{font-family:var(--font-display);font-size:20px;color:var(--green)}
+    table{width:100%;border-collapse:collapse}
+    th{padding:12px 16px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#888;font-weight:500;text-align:left;border-bottom:1px solid var(--border);background:#fafaf8}
+    td{padding:14px 16px;font-size:13px;border-bottom:1px solid rgba(45,106,53,.06);vertical-align:middle}
+    tr:last-child td{border-bottom:none}
+    tr:hover td{background:#fafaf8}
+    .badge{font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px}
+    .badge-unread{background:#fff3cd;color:#856404}
+    .badge-read{background:var(--green-pale);color:var(--green)}
+    .badge-cat{background:var(--green-pale);color:var(--green-mid)}
+    .action-btns{display:flex;gap:8px}
+    .btn-sm{padding:6px 14px;font-size:11px;letter-spacing:.08em;font-family:var(--font);cursor:pointer;border:none;transition:.2s}
+    .btn-green{background:var(--green);color:var(--cream)}
+    .btn-green:hover{background:var(--green-mid)}
+    .btn-red{background:var(--red);color:white}
+    .btn-red:hover{background:#a93226}
+    .btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+    .btn-outline:hover{border-color:var(--green-mid);color:var(--green-mid)}
+
+    /* ── FORMULAIRE UPLOAD ── */
+    .upload-form{padding:28px;background:#fafaf8;border:1px solid var(--border)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field.full{grid-column:span 2}
+    .field label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--green-mid)}
+    .field input,.field select,.field textarea{padding:10px 14px;border:1px solid var(--border);font-family:var(--font);font-size:13px;background:white;outline:none;transition:.2s}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green-mid)}
+    .field textarea{height:80px;resize:vertical}
+    .file-drop{border:2px dashed var(--border);padding:32px;text-align:center;cursor:pointer;transition:.2s;position:relative}
+    .file-drop:hover{border-color:var(--green-mid);background:var(--green-pale)}
+    .file-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+    .file-drop p{font-size:13px;color:#888}
+    .file-drop strong{color:var(--green-mid)}
+    .preview-img{max-height:120px;margin:12px auto 0;display:none}
+    .form-actions{display:flex;gap:12px;margin-top:20px}
+    .btn-submit{padding:12px 32px;background:var(--green);color:var(--cream);font-family:var(--font);font-size:12px;letter-spacing:.15em;text-transform:uppercase;border:none;cursor:pointer}
+    .btn-submit:hover{background:var(--green-mid)}
+    .btn-cancel{padding:12px 24px;background:transparent;border:1px solid var(--border);font-family:var(--font);font-size:12px;letter-spacing:.1em;cursor:pointer}
+
+    /* ── TABS ── */
+    .section{display:none}.section.active{display:block}
+    .empty{text-align:center;padding:48px;color:#aaa;font-size:14px}
+    .loading{text-align:center;padding:32px;color:#888;font-size:13px}
+
+    /* ── Toast ── */
+    .toast{position:fixed;bottom:32px;right:32px;padding:14px 24px;font-size:13px;color:white;z-index:9999;transform:translateY(80px);opacity:0;transition:.3s;border-radius:2px}
+    .toast.show{transform:translateY(0);opacity:1}
+    .toast.success{background:var(--green)}
+    .toast.error{background:var(--red)}
+
+    .msg-preview{max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#888}
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ LOGIN ══════════════ -->
+<div id="login-screen">
+  <div class="login-box">
+    <p class="login-logo">Touche<em>Verte</em></p>
+    <p class="login-sub">Panel d'administration</p>
+    <div class="login-field">
+      <label>Email</label>
+      <input type="email" id="login-email" placeholder="admin@toucheverte.co.ma" />
+    </div>
+    <div class="login-field">
+      <label>Mot de passe</label>
+      <input type="password" id="login-pwd" placeholder="••••••••" />
+    </div>
+    <button class="login-btn" onclick="doLogin()">Se connecter</button>
+    <p class="login-err" id="login-err">Identifiants incorrects</p>
+  </div>
+</div>
+
+<!-- ══════════════ APP ══════════════ -->
+<div id="app">
+  <aside class="sidebar">
+    <div class="sidebar-logo">Touche<em>Verte</em></div>
+    <p class="sidebar-label">Navigation</p>
+    <div class="nav-item active" onclick="showSection('dashboard')"><span class="icon">📊</span> Tableau de bord</div>
+    <div class="nav-item" onclick="showSection('messages')"><span class="icon">✉️</span> Messages <span id="badge-count" style="margin-left:auto;background:var(--green-light);color:white;font-size:10px;padding:2px 7px;border-radius:10px;display:none"></span></div>
+    <div class="nav-item" onclick="showSection('galerie')"><span class="icon">🖼️</span> Galerie</div>
+    <div class="nav-item" onclick="showSection('upload')"><span class="icon">📤</span> Ajouter photo</div>
+    <div class="sidebar-bottom">
+      <button class="logout-btn" onclick="logout()">Déconnexion</button>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- Dashboard -->
+    <div class="section active" id="section-dashboard">
+      <div class="page-header">
+        <h1>Tableau de <em>bord</em></h1>
+        <p>Vue d'ensemble du site Touche Verte</p>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="val" id="stat-messages">–</div><div class="lbl">Messages reçus</div></div>
+        <div class="stat-card"><div class="val" id="stat-nonlus">–</div><div class="lbl">Non lus</div></div>
+        <div class="stat-card"><div class="val" id="stat-photos">–</div><div class="lbl">Photos en galerie</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">Derniers messages</span><button class="btn-sm btn-outline" onclick="showSection('messages')">Voir tout</button></div>
+        <table><thead><tr><th>Nom</th><th>Email</th><th>Message</th><th>Date</th><th>Statut</th></tr></thead>
+        <tbody id="recent-messages"><tr><td colspan="5" class="loading">Chargement…</td></tr></tbody></table>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="section" id="section-messages">
+      <div class="page-header">
+        <h1><em>Messages</em> reçus</h1>
+        <p>Formulaire de contact du site</p>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">Tous les messages</span></div>
+        <table><thead><tr><th>Nom</th><th>Email</th><th>Tél</th><th>Service</th><th>Message</th><th>Date</th><th>Actions</th></tr></thead>
+        <tbody id="messages-table"><tr><td colspan="7" class="loading">Chargement…</td></tr></tbody></table>
+      </div>
+    </div>
+
+    <!-- Galerie -->
+    <div class="section" id="section-galerie">
+      <div class="page-header">
+        <h1>Galerie <em>photos</em></h1>
+        <p>Gérer les réalisations affichées sur le site</p>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">Toutes les photos</span><button class="btn-sm btn-green" onclick="showSection('upload')">+ Ajouter</button></div>
+        <table><thead><tr><th>Image</th><th>Titre</th><th>Catégorie</th><th>Lieu</th><th>Statut</th><th>Actions</th></tr></thead>
+        <tbody id="galerie-table"><tr><td colspan="6" class="loading">Chargement…</td></tr></tbody></table>
+      </div>
+    </div>
+
+    <!-- Upload -->
+    <div class="section" id="section-upload">
+      <div class="page-header">
+        <h1>Ajouter une <em>photo</em></h1>
+        <p>La photo sera immédiatement visible sur le site</p>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">Nouvelle réalisation</span></div>
+        <div style="padding:28px">
+          <form id="upload-form" onsubmit="submitUpload(event)">
+            <div class="form-grid">
+              <div class="field">
+                <label>Titre *</label>
+                <input type="text" id="u-titre" required placeholder="Villa Royale" />
+              </div>
+              <div class="field">
+                <label>Catégorie *</label>
+                <select id="u-cat" required>
+                  <option value="">Choisir…</option>
+                  <option value="villas">Villas</option>
+                  <option value="residentiel">Résidentiel</option>
+                  <option value="exterieur">Extérieur</option>
+                  <option value="interieur">Intérieur</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Lieu</label>
+                <input type="text" id="u-lieu" placeholder="Marrakech" />
+              </div>
+              <div class="field">
+                <label>Ordre d'affichage</label>
+                <input type="number" id="u-ordre" value="0" min="0" />
+              </div>
+              <div class="field full">
+                <label>Description</label>
+                <textarea id="u-desc" placeholder="Description courte du projet…"></textarea>
+              </div>
+              <div class="field full">
+                <label>Photo *</label>
+                <div class="file-drop">
+                  <input type="file" id="u-file" accept="image/*" onchange="previewFile(this)" required />
+                  <p>📁 Glisser-déposer ou <strong>cliquer pour choisir</strong></p>
+                  <p style="font-size:11px;margin-top:4px">JPG, PNG, WebP — max 10 Mo</p>
+                  <img class="preview-img" id="file-preview" />
+                </div>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-submit" id="upload-btn">Publier la photo</button>
+              <button type="button" class="btn-cancel" onclick="showSection('galerie')">Annuler</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ══ CONFIG ══
+  const API = 'https://toucheverte-api.onrender.com/api'; // ← Mettre votre URL Render ici
+  let token = localStorage.getItem('tv_token');
+
+  // ══ INIT ══
+  if (token) showApp();
+
+  // ══ LOGIN ══
+  async function doLogin() {
+    const email = document.getElementById('login-email').value;
+    const pwd   = document.getElementById('login-pwd').value;
+    try {
+      const res  = await fetch(`${API}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password: pwd }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
+      token = data.token;
+      localStorage.setItem('tv_token', token);
+      showApp();
+    } catch {
+      document.getElementById('login-err').style.display = 'block';
+    }
+  }
+
+  document.getElementById('login-pwd')?.addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+
+  function showApp() {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadDashboard();
+  }
+
+  function logout() {
+    localStorage.removeItem('tv_token');
+    token = null;
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('app').style.display = 'none';
+  }
+
+  // ══ NAVIGATION ══
+  function showSection(name) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('section-' + name).classList.add('active');
+    event?.target?.closest('.nav-item')?.classList.add('active');
+
+    if (name === 'messages') loadMessages();
+    if (name === 'galerie')  loadGalerie();
+    if (name === 'dashboard') loadDashboard();
+  }
+
+  // ══ API HELPER ══
+  async function api(endpoint, options = {}) {
+    const res = await fetch(`${API}${endpoint}`, {
+      ...options,
+      headers: { Authorization: `Bearer ${token}`, ...options.headers },
+    });
+    return res.json();
+  }
+
+  // ══ DASHBOARD ══
+  async function loadDashboard() {
+    const [msgs, real] = await Promise.all([
+      api('/contact'),
+      api('/realisations/admin'),
+    ]);
+    const nonLus = msgs.data?.filter(m => !m.lu).length || 0;
+    document.getElementById('stat-messages').textContent = msgs.pagination?.total || 0;
+    document.getElementById('stat-nonlus').textContent   = nonLus;
+    document.getElementById('stat-photos').textContent   = real.data?.length || 0;
+
+    const badge = document.getElementById('badge-count');
+    if (nonLus > 0) { badge.textContent = nonLus; badge.style.display = 'inline'; }
+
+    const recent = (msgs.data || []).slice(0, 5);
+    document.getElementById('recent-messages').innerHTML = recent.length
+      ? recent.map(m => `
+          <tr>
+            <td><strong>${m.prenom} ${m.nom}</strong></td>
+            <td>${m.email}</td>
+            <td class="msg-preview">${m.message}</td>
+            <td>${new Date(m.createdAt).toLocaleDateString('fr-FR')}</td>
+            <td><span class="badge ${m.lu ? 'badge-read' : 'badge-unread'}">${m.lu ? 'Lu' : 'Non lu'}</span></td>
+          </tr>`).join('')
+      : '<tr><td colspan="5" class="empty">Aucun message</td></tr>';
+  }
+
+  // ══ MESSAGES ══
+  async function loadMessages() {
+    const data = await api('/contact');
+    const msgs = data.data || [];
+    document.getElementById('messages-table').innerHTML = msgs.length
+      ? msgs.map(m => `
+          <tr id="msg-${m._id}">
+            <td><strong>${m.prenom} ${m.nom}</strong></td>
+            <td><a href="mailto:${m.email}" style="color:var(--green-mid)">${m.email}</a></td>
+            <td>${m.tel || '–'}</td>
+            <td>${m.service ? `<span class="badge badge-cat">${m.service}</span>` : '–'}</td>
+            <td class="msg-preview" title="${m.message}">${m.message}</td>
+            <td>${new Date(m.createdAt).toLocaleDateString('fr-FR')}</td>
+            <td>
+              <div class="action-btns">
+                ${!m.lu ? `<button class="btn-sm btn-outline" onclick="markRead('${m._id}')">✓ Lu</button>` : ''}
+                <button class="btn-sm btn-red" onclick="deleteMsg('${m._id}')">🗑</button>
+              </div>
+            </td>
+          </tr>`).join('')
+      : '<tr><td colspan="7" class="empty">Aucun message reçu</td></tr>';
+  }
+
+  async function markRead(id) {
+    await api(`/contact/${id}/lu`, { method: 'PATCH' });
+    toast('Message marqué comme lu', 'success');
+    loadMessages();
+    loadDashboard();
+  }
+
+  async function deleteMsg(id) {
+    if (!confirm('Supprimer ce message ?')) return;
+    await api(`/contact/${id}`, { method: 'DELETE' });
+    document.getElementById('msg-' + id)?.remove();
+    toast('Message supprimé', 'success');
+    loadDashboard();
+  }
+
+  // ══ GALERIE ══
+  async function loadGalerie() {
+    const data = await api('/realisations/admin');
+    const items = data.data || [];
+    document.getElementById('galerie-table').innerHTML = items.length
+      ? items.map(r => `
+          <tr id="real-${r._id}">
+            <td><img src="${r.image.url}" style="width:72px;height:48px;object-fit:cover;display:block" /></td>
+            <td><strong>${r.titre}</strong></td>
+            <td><span class="badge badge-cat">${r.categorie}</span></td>
+            <td>${r.lieu || '–'}</td>
+            <td><span class="badge ${r.publie ? 'badge-read' : 'badge-unread'}">${r.publie ? 'Publié' : 'Masqué'}</span></td>
+            <td>
+              <div class="action-btns">
+                <button class="btn-sm btn-outline" onclick="togglePublish('${r._id}', ${r.publie})">${r.publie ? 'Masquer' : 'Publier'}</button>
+                <button class="btn-sm btn-red" onclick="deleteReal('${r._id}')">🗑</button>
+              </div>
+            </td>
+          </tr>`).join('')
+      : '<tr><td colspan="6" class="empty">Aucune photo dans la galerie</td></tr>';
+  }
+
+  async function togglePublish(id, current) {
+    const fd = new FormData();
+    fd.append('publie', !current);
+    await fetch(`${API}/realisations/${id}`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}` },
+      body: fd,
+    });
+    toast(current ? 'Photo masquée' : 'Photo publiée', 'success');
+    loadGalerie();
+  }
+
+  async function deleteReal(id) {
+    if (!confirm('Supprimer cette photo ? Elle sera aussi effacée de Cloudinary.')) return;
+    await api(`/realisations/${id}`, { method: 'DELETE' });
+    document.getElementById('real-' + id)?.remove();
+    toast('Photo supprimée', 'success');
+    loadDashboard();
+  }
+
+  // ══ UPLOAD ══
+  function previewFile(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const preview = document.getElementById('file-preview');
+    preview.src = URL.createObjectURL(file);
+    preview.style.display = 'block';
+  }
+
+  async function submitUpload(e) {
+    e.preventDefault();
+    const btn = document.getElementById('upload-btn');
+    btn.textContent = 'Envoi en cours…';
+    btn.disabled = true;
+
+    const fd = new FormData();
+    fd.append('titre',       document.getElementById('u-titre').value);
+    fd.append('categorie',   document.getElementById('u-cat').value);
+    fd.append('lieu',        document.getElementById('u-lieu').value);
+    fd.append('description', document.getElementById('u-desc').value);
+    fd.append('ordre',       document.getElementById('u-ordre').value);
+    fd.append('image',       document.getElementById('u-file').files[0]);
+
+    try {
+      const res = await fetch(`${API}/realisations`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+        body: fd,
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
+      toast('Photo publiée avec succès !', 'success');
+      document.getElementById('upload-form').reset();
+      document.getElementById('file-preview').style.display = 'none';
+      showSection('galerie');
+    } catch (err) {
+      toast(err.message || 'Erreur lors de l\'envoi', 'error');
+    } finally {
+      btn.textContent = 'Publier la photo';
+      btn.disabled = false;
+    }
+  }
+
+  // ══ TOAST ══
+  function toast(msg, type = 'success') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = `toast ${type} show`;
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+</script>
+</body>
+</html>

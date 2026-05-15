@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aménagements extérieurs Touche Verte — Jardins secs, exotiques, espaces publics et professionnels au Maroc." />
+  <title>Aménagements Externes — Touche Verte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .ext-masonry { columns:3; gap:8px; margin-top:64px; }
+    .ext-item { break-inside:avoid; position:relative; overflow:hidden; margin-bottom:8px; cursor:pointer; }
+    .ext-bg { width:100%; display:flex; align-items:center; justify-content:center; opacity:.22; transition:transform .6s ease; }
+    .ext-item:hover .ext-bg { transform:scale(1.04); }
+    .ext-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(26,58,31,.85) 0%,transparent 55%); display:flex; flex-direction:column; justify-content:flex-end; padding:24px; opacity:0; transition:opacity .4s; }
+    .ext-item:hover .ext-overlay { opacity:1; }
+    .ext-cat { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--green-pale); margin-bottom:4px; }
+    .ext-name { font-family:var(--font-display); font-size:20px; color:var(--cream); font-weight:400; }
+
+    .types-ext { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:64px; }
+    .type-ext { padding:36px; background:white; border:1px solid rgba(45,106,53,.1); text-align:center; transition:all .3s; }
+    .type-ext:hover { border-color:var(--green-light); background:var(--green-pale); }
+    .type-ext-icon { font-size:40px; margin-bottom:16px; }
+    .type-ext-title { font-family:var(--font-display); font-size:20px; color:var(--green-deep); font-weight:600; margin-bottom:8px; }
+    .type-ext-desc { font-size:13px; color:var(--text-mid); font-weight:300; line-height:1.7; }
+
+    @media(max-width:768px){
+      .ext-masonry { columns:1; }
+      .types-ext { grid-template-columns:1fr; }
+    }
+    @media(max-width:1024px) and (min-width:769px){
+      .ext-masonry { columns:2; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">Touche<em>Verte</em></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="services.html">Nos Services</a></li>
+      <li class="has-dropdown"><a href="realisations.html" class="active">Nos Réalisations</a>
+        <ul class="dropdown">
+          <li><a href="villas.html">Villas</a></li>
+          <li><a href="groupes-residentiels.html">Groupes Résidentiels</a></li>
+          <li><a href="amenagement-ext.html">Aménagements Externes</a></li>
+          <li><a href="amenagement-int.html">Aménagements Internes</a></li>
+        </ul>
+      </li>
+      <li><a href="references.html">Références</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="font-size:11px;padding:12px 28px;">Nous Contacter</a>
+    <div class="nav-burger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="page-hero">
+    <p class="tag">Réalisations — Extérieur</p>
+    <h1 class="display-title">Aménagements <em>Externes</em></h1>
+    <p>Jardins secs, exotiques, espaces publics et professionnels</p>
+  </div>
+
+  <!-- TYPES -->
+  <section style="padding:100px 60px;background:var(--cream);">
+    <div class="section-header fade-up">
+      <div>
+        <p class="tag">Nos spécialités extérieures</p>
+        <h2 class="display-title section-title">Tous types d'<em>espaces</em></h2>
+      </div>
+    </div>
+    <div class="types-ext">
+      <div class="type-ext fade-up delay-1">
+        <div class="type-ext-icon">🌵</div>
+        <h3 class="type-ext-title">Jardin Sec</h3>
+        <p class="type-ext-desc">Composition minérale et végétale adaptée aux zones arides. Cactées, graminées et graviers pour un résultat contemporain et économe en eau.</p>
+      </div>
+      <div class="type-ext fade-up delay-2">
+        <div class="type-ext-icon">🌴</div>
+        <h3 class="type-ext-title">Jardin Exotique</h3>
+        <p class="type-ext-desc">Bambous, bananiers, palmiers et plantes tropicales pour créer un univers luxuriant et dépaysant dans votre jardin.</p>
+      </div>
+      <div class="type-ext fade-up delay-3">
+        <div class="type-ext-icon">🏛️</div>
+        <h3 class="type-ext-title">Espaces Publics</h3>
+        <p class="type-ext-desc">Parcs, ronds-points, allées et espaces verts urbains. Nous travaillons avec les collectivités pour embellir le cadre de vie de tous.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE MASONRY -->
+  <section style="padding:100px 60px;background:white;">
+    <div class="section-header fade-up">
+      <div>
+        <p class="tag">Nos travaux</p>
+        <h2 class="display-title section-title">Galerie <em>extérieure</em></h2>
+      </div>
+    </div>
+    <div class="ext-masonry fade-up delay-1">
+
+      <div class="ext-item">
+        <div class="ext-bg" style="height:320px;background:linear-gradient(135deg,#1a3a1f,#0d2412)">🌵</div>
+        <div class="ext-overlay">
+          <p class="ext-cat">Jardin Sec</p>
+          <p class="ext-name">Résidence Marrakech</p>
+        </div>
+      </div>
+
+      <div class="ext-item">
+        <div class="ext-bg" style="height:220px;background:linear-gradient(135deg,#2d6a35,#1a3a1f)">🌴</div>
+        <div class="ext-overlay">
+          <p class="ext-cat">Jardin Exotique</p>
+          <p class="ext-name">Villa Palmeraie</p>
+        </div>
+      </div>
+
+      <div class="ext-item">
+        <div class="ext-bg" style="height:280px;background:linear-gradient(135deg,#639922,#2d6a35)">🌿</div>
+        <div class="ext-overlay">
+          <p class="ext-cat">Espace Public</p>
+          <p class="ext-name">Parc Municipal Rabat</p>
+        </div>
+      </div>
+
+      <div class="ext-item">
+        <div class="ext-bg" style="height:240px;background:linear-gradient(135deg,#4a9e55,#3a7a42)">🌱</div>
+        <div class="ext-overlay">
+          <p class="ext-cat">Espace Professionnel</p>
+          <p class="ext-name">Entrée Industrielle</p>
+        </div>
+      </div>
+
+      <div class="ext-item">
+        <div class="ext-bg" style="height:360px;background:linear-gradient(135deg,#3a7a42,#2d6a35)">🌺</div>
+        <div class="ext-overlay">
+          <p class="ext-cat">Jardin Fleuri</p>
+          <p class="ext-name">Résidence Nord Casablanca</p>
+        </div>
+      </div>
+
+      <div class="ext-item">
+        <div class="ext-bg" style="height:200px;background:linear-gradient(135deg,#1a5c28,#0d3015)">🎋</div>
+        <div class="ext-overlay">
+          <p class="ext-cat">Bambouseraie</p>
+          <p class="ext-name">Hôtel Sofitel Marrakech</p>
+        </div>
+      </div>
+
+      <div class="ext-item">
+        <div class="ext-bg" style="height:280px;background:linear-gradient(135deg,#2d6a35,#4a9e55)">🌳</div>
+        <div class="ext-overlay">
+          <p class="ext-cat">Jardin Classique</p>
+          <p class="ext-name">Jardin Public Fès</p>
+        </div>
+      </div>
+
+      <div class="ext-item">
+        <div class="ext-bg" style="height:300px;background:linear-gradient(135deg,#3a5c1a,#1a3a1f)">🌸</div>
+        <div class="ext-overlay">
+          <p class="ext-cat">Massifs Fleuris</p>
+          <p class="ext-name">Boulevard Agadir</p>
+        </div>
+      </div>
+
+      <div class="ext-item">
+        <div class="ext-bg" style="height:260px;background:linear-gradient(135deg,#639922,#3a5c1a)">🌾</div>
+        <div class="ext-overlay">
+          <p class="ext-cat">Graminées</p>
+          <p class="ext-name">Villa Contemporaine</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div style="background:var(--green-deep);padding:80px 60px;text-align:center">
+    <h2 class="display-title" style="font-size:48px;color:var(--cream);margin-bottom:24px">Un projet d'<em style="color:var(--green-light)">aménagement extérieur</em> ?</h2>
+    <p style="font-size:14px;color:rgba(247,243,236,.6);margin-bottom:36px;font-weight:300">Devis gratuit — Intervention sur tout le territoire marocain</p>
+    <a href="contact.html" class="btn btn-ghost">Nous contacter →</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div><p class="footer-logo">Touche<em>Verte</em></p><p class="footer-desc">Spécialistes de l'aménagement et de l'entretien des espaces verts et jardins au Maroc depuis 2005.</p></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="bureau-etudes.html">Bureau d'études</a></li><li><a href="amenagement.html">Aménagement</a></li><li><a href="entretien.html">Entretien</a></li></ul></div>
+      <div class="footer-col"><h4>Réalisations</h4><ul><li><a href="villas.html">Villas</a></li><li><a href="groupes-residentiels.html">Résidentiel</a></li><li><a href="amenagement-ext.html">Extérieur</a></li><li><a href="amenagement-int.html">Intérieur</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Formulaire</a></li><li><a href="mailto:contact@toucheverte.co.ma">Email</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Touche Verte SARL — Tous droits réservés</span>
+       
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

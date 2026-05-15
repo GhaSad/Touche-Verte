@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Entretien d'espaces verts et jardins — Touche Verte, contrats annuels et intervention régulière au Maroc." />
+  <title>Entretien — Touche Verte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .prestations-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:64px; }
+    .prestation-item { background:white; padding:36px; border:1px solid rgba(45,106,53,.1); display:flex; gap:20px; align-items:flex-start; transition:all .3s; }
+    .prestation-item:hover { border-color:var(--green-light); transform:translateX(6px); }
+    .prestation-icon { width:48px; height:48px; background:var(--green-pale); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+    .prestation-title { font-family:var(--font-display); font-size:20px; font-weight:600; color:var(--green-deep); margin-bottom:8px; }
+    .prestation-desc { font-size:13px; line-height:1.8; color:var(--text-mid); font-weight:300; }
+
+    .contrats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:64px; }
+    .contrat-card { background:white; padding:48px 36px; border:1px solid rgba(45,106,53,.1); position:relative; overflow:hidden; }
+    .contrat-card.featured { background:var(--green-deep); }
+    .contrat-card.featured .contrat-name,
+    .contrat-card.featured .contrat-price { color:var(--cream); }
+    .contrat-card.featured .contrat-desc { color:rgba(247,243,236,.6); }
+    .contrat-card.featured li { color:rgba(247,243,236,.8); border-color:rgba(247,243,236,.1) !important; }
+    .contrat-badge { position:absolute; top:20px; right:20px; background:var(--green-light); color:white; font-size:10px; letter-spacing:.12em; text-transform:uppercase; padding:5px 12px; }
+    .contrat-name { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--green-mid); font-weight:500; margin-bottom:20px; }
+    .contrat-price { font-family:var(--font-display); font-size:48px; color:var(--green-deep); font-weight:400; line-height:1; margin-bottom:8px; }
+    .contrat-price span { font-size:18px; }
+    .contrat-desc { font-size:13px; color:var(--text-mid); font-weight:300; margin-bottom:28px; }
+    .contrat-list { list-style:none; display:flex; flex-direction:column; gap:0; margin-bottom:36px; }
+    .contrat-list li { font-size:13px; color:var(--text-mid); padding:10px 0; border-bottom:1px solid rgba(45,106,53,.1); font-weight:300; display:flex; align-items:center; gap:10px; }
+    .contrat-list li::before { content:'✓'; color:var(--green-mid); font-weight:500; flex-shrink:0; }
+
+    .saisons-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+    .saison { padding:48px 32px; border-right:1px solid rgba(45,106,53,.1); }
+    .saison:last-child { border-right:none; }
+    .saison-name { font-family:var(--font-display); font-size:28px; color:var(--green-deep); font-weight:600; margin-bottom:20px; }
+    .saison-tasks { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .saison-tasks li { font-size:13px; color:var(--text-mid); font-weight:300; display:flex; align-items:flex-start; gap:8px; }
+    .saison-tasks li::before { content:'·'; color:var(--green-mid); font-size:20px; line-height:1; }
+
+    @media(max-width:768px){
+      .prestations-grid { grid-template-columns:1fr; }
+      .contrats-grid { grid-template-columns:1fr; }
+      .saisons-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:480px){
+      .saisons-grid { grid-template-columns:1fr; }
+      .saison { border-right:none; border-bottom:1px solid rgba(45,106,53,.1); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">Touche<em>Verte</em></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li class="has-dropdown"><a href="services.html" class="active">Nos Services</a>
+        <ul class="dropdown">
+          <li><a href="bureau-etudes.html">Bureau d'études</a></li>
+          <li><a href="amenagement.html">Aménagement</a></li>
+          <li><a href="entretien.html">Entretien</a></li>
+        </ul>
+      </li>
+      <li><a href="realisations.html">Nos Réalisations</a></li>
+      <li><a href="references.html">Références</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="font-size:11px;padding:12px 28px;">Nous Contacter</a>
+    <div class="nav-burger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="page-hero">
+    <p class="tag">Service 03</p>
+    <h1 class="display-title"><em>Entretien</em> des Espaces Verts</h1>
+    <p>Préserver la beauté de votre jardin tout au long de l'année</p>
+  </div>
+
+  <!-- PRESTATIONS -->
+  <section style="padding:100px 60px;background:var(--cream);">
+    <div class="section-header fade-up">
+      <div>
+        <p class="tag">Nos prestations</p>
+        <h2 class="display-title section-title">Un entretien <em>complet</em></h2>
+      </div>
+    </div>
+    <div class="prestations-grid">
+      <div class="prestation-item fade-up delay-1">
+        <div class="prestation-icon">✂️</div>
+        <div>
+          <h3 class="prestation-title">Taille & Élagage</h3>
+          <p class="prestation-desc">Taille des haies, arbustes et arbres ornementaux. Élagage raisonné pour maintenir la forme et la santé de vos végétaux selon les saisons.</p>
+        </div>
+      </div>
+      <div class="prestation-item fade-up delay-2">
+        <div class="prestation-icon">💧</div>
+        <div>
+          <h3 class="prestation-title">Arrosage & Irrigation</h3>
+          <p class="prestation-desc">Gestion et programmation des systèmes d'arrosage automatique. Suivi des besoins en eau selon les espèces et la saison.</p>
+        </div>
+      </div>
+      <div class="prestation-item fade-up delay-1">
+        <div class="prestation-icon">🌱</div>
+        <div>
+          <h3 class="prestation-title">Désherbage & Binage</h3>
+          <p class="prestation-desc">Élimination des mauvaises herbes, binage des massifs et entretien du paillage pour favoriser la croissance de vos plantes.</p>
+        </div>
+      </div>
+      <div class="prestation-item fade-up delay-2">
+        <div class="prestation-icon">🌿</div>
+        <div>
+          <h3 class="prestation-title">Traitement Phytosanitaire</h3>
+          <p class="prestation-desc">Diagnostic et traitement des maladies et nuisibles. Application de solutions respectueuses de l'environnement pour protéger vos végétaux.</p>
+        </div>
+      </div>
+      <div class="prestation-item fade-up delay-1">
+        <div class="prestation-icon">🍂</div>
+        <div>
+          <h3 class="prestation-title">Ramassage des Feuilles</h3>
+          <p class="prestation-desc">Nettoyage saisonnier des feuilles mortes et débris végétaux. Maintien de la propreté et de l'esthétique de votre espace.</p>
+        </div>
+      </div>
+      <div class="prestation-item fade-up delay-2">
+        <div class="prestation-icon">🌺</div>
+        <div>
+          <h3 class="prestation-title">Replantation & Fleurissement</h3>
+          <p class="prestation-desc">Renouvellement des massifs fleuris selon les saisons. Replantation et renforcement du jardin pour un résultat toujours spectaculaire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTRATS -->
+  <section style="padding:120px 60px;background:var(--cream-dark);">
+    <div class="section-header fade-up">
+      <div>
+        <p class="tag">Nos formules</p>
+        <h2 class="display-title section-title">Contrats d'<em>entretien</em></h2>
+      </div>
+    </div>
+    <div class="contrats-grid">
+      <div class="contrat-card fade-up delay-1">
+        <p class="contrat-name">Essentiel</p>
+        <p class="contrat-price">Sur<span> devis</span></p>
+        <p class="contrat-desc">Pour un entretien basique, intervention mensuelle.</p>
+        <ul class="contrat-list">
+          <li>1 visite / mois</li>
+          <li>Taille des haies</li>
+          <li>Désherbage</li>
+          <li>Ramassage feuilles</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline" style="font-size:11px;padding:12px 0">Demander un devis</a>
+      </div>
+      <div class="contrat-card featured fade-up delay-2">
+        <p class="contrat-badge">Recommandé</p>
+        <p class="contrat-name" style="color:var(--green-pale)">Confort</p>
+        <p class="contrat-price">Sur<span> devis</span></p>
+        <p class="contrat-desc">L'entretien complet, intervention bi-mensuelle.</p>
+        <ul class="contrat-list">
+          <li>2 visites / mois</li>
+          <li>Taille & élagage</li>
+          <li>Désherbage & binage</li>
+          <li>Gestion arrosage</li>
+          <li>Traitement phytosanitaire</li>
+          <li>Rapport d'intervention</li>
+        </ul>
+        <a href="contact.html" class="btn btn-ghost" style="font-size:11px;padding:12px 0">Demander un devis</a>
+      </div>
+      <div class="contrat-card fade-up delay-3">
+        <p class="contrat-name">Premium</p>
+        <p class="contrat-price">Sur<span> devis</span></p>
+        <p class="contrat-desc">La formule complète, intervention hebdomadaire.</p>
+        <ul class="contrat-list">
+          <li>1 visite / semaine</li>
+          <li>Toutes prestations incluses</li>
+          <li>Fleurissement saisonnier</li>
+          <li>Arrosage programmé</li>
+          <li>Interlocuteur dédié</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline" style="font-size:11px;padding:12px 0">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDRIER SAISONNIER -->
+  <section style="padding:120px 60px;background:white;">
+    <div class="section-header fade-up">
+      <div>
+        <p class="tag">Tout au long de l'année</p>
+        <h2 class="display-title section-title">Le jardinage au <em>fil des saisons</em></h2>
+      </div>
+    </div>
+    <div class="saisons-grid" style="margin-top:64px;border:1px solid rgba(45,106,53,.1);">
+      <div class="saison fade-up delay-1">
+        <p class="saison-name">🌸 Printemps</p>
+        <ul class="saison-tasks">
+          <li>Taille de printemps</li>
+          <li>Semis et plantations</li>
+          <li>Activation arrosage</li>
+          <li>Premier désherbage</li>
+          <li>Traitement préventif</li>
+        </ul>
+      </div>
+      <div class="saison fade-up delay-2">
+        <p class="saison-name">☀️ Été</p>
+        <ul class="saison-tasks">
+          <li>Arrosage intensif</li>
+          <li>Taille estivale</li>
+          <li>Entretien massifs</li>
+          <li>Traitement maladies</li>
+          <li>Paillage anti-sécheresse</li>
+        </ul>
+      </div>
+      <div class="saison fade-up delay-3">
+        <p class="saison-name">🍂 Automne</p>
+        <ul class="saison-tasks">
+          <li>Ramassage feuilles</li>
+          <li>Taille d'automne</li>
+          <li>Plantations vivaces</li>
+          <li>Amendement du sol</li>
+          <li>Préparation hiver</li>
+        </ul>
+      </div>
+      <div class="saison fade-up delay-4">
+        <p class="saison-name">❄️ Hiver</p>
+        <ul class="saison-tasks">
+          <li>Taille des arbres</li>
+          <li>Protection des plantes</li>
+          <li>Nettoyage général</li>
+          <li>Révision arrosage</li>
+          <li>Planification annuelle</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div style="background:var(--green-deep);padding:80px 60px;text-align:center">
+    <h2 class="display-title" style="font-size:48px;color:var(--cream);margin-bottom:24px">Un jardin <em style="color:var(--green-light)">toujours impeccable</em></h2>
+    <p style="font-size:14px;color:rgba(247,243,236,.6);margin-bottom:36px;font-weight:300">Demandez votre contrat d'entretien personnalisé</p>
+    <a href="contact.html" class="btn btn-ghost">Nous contacter →</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div><p class="footer-logo">Touche<em>Verte</em></p><p class="footer-desc">Spécialistes de l'aménagement et de l'entretien des espaces verts et jardins au Maroc depuis 2005.</p></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="bureau-etudes.html">Bureau d'études</a></li><li><a href="amenagement.html">Aménagement</a></li><li><a href="entretien.html">Entretien</a></li></ul></div>
+      <div class="footer-col"><h4>Réalisations</h4><ul><li><a href="villas.html">Villas</a></li><li><a href="realisations.html">Toutes les réalisations</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Formulaire</a></li><li><a href="mailto:contact@toucheverte.co.ma">Email</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Touche Verte SARL — Tous droits réservés</span>
+       
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
